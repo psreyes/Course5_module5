@@ -1,0 +1,66 @@
+<div class="">
+  SignUp to recieve News Letters
+</div>
+
+  <fieldset ng-model="user">
+    <legend style="color: white">Registration</legend>
+    <form style=color:black
+     name="SignUp" novalidate>
+     <ul>
+      <li>
+      <input type="text" name="name" placeholder="Your first name"
+      ng-model="user.name"
+      required
+      minlength="3"
+      ng-maxlength="10">
+          <span style="color: white" ng-if="(SignUp.name.$error.minlength || SignUp.name.$error.required) && SignUp.name.$touched"> Please enter your name</span>
+          <span style="color: white" ng-if="SignUp.name.$error.maxlength && SignUp.name.$touched">
+          Name must not be longer than 10 characters
+          </span>
+      </li>
+      <li>
+      <input type="text" name="lastname" placeholder="Your last name"
+      required
+      ng-model="user.lastname"
+      minlength="3"
+      ng-maxlength="10">
+          <span style="color: white" ng-if="(SignUp.lastname.$error.minlength || SignUp.lastname.$error.required) && SignUp.lastname.$touched"> Please enter your last name</span>
+          <span style="color: white" ng-if="SignUp.lastname.$error.maxlength && SignUp.lastname.$touched">lastname must be 10 characters maximum</span>
+      </li>
+      <li>
+      <input type="email" name="email" placeholder="Email"
+      ng-model="user.email" required>
+          <span style="color: white" ng-if="SignUp.email.$invalid && SignUp.email.$touched">
+            Must be a valid email address: handle@domain format</span>
+      </li>
+      <li>
+      <input type="text" name="phone" placeholder="phone number ###-###-####"
+      pattern="(\d{3})-(\d{3})-(\d{4})" ng-model=user.phone>
+      <span style="color: white" ng-if="SignUp.phone.$invalid && SignUp.phone.$touched">
+        Telephone format must be ###-###-#### Example: 123-456-7899 </span>
+      </li>
+      <li>
+      <input type="text" name="favorite_short" placeholder="Select your favorite dish"
+      ng-model="user.favorite_short">
+
+      </li>
+      </ul>
+    </form>
+  </fieldset>
+
+  <button style="color:black"
+          ng-disabled="SignUp.$invalid"
+          ng-click="user.submit();">Submit</button>
+
+    <div id="info" ng-if="user.completed">
+      <!-- Username: {{ user.name}} <br>
+      Email: {{ user.email}} <br>
+      Phone: {{ user.phone }} <br>
+      {{ user.favorite_dish }} -->
+      <div ng-if="user.favorite_dish == undefined">
+        Item Not found
+      </div>
+      <div ng-if="user.favorite_dish != undefined">
+        Your information has been saved
+      </div>
+    </div>

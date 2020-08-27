@@ -1,0 +1,50 @@
+<div class="container">
+  <h2 id="my-info-title" class="text-center">My Info</h2>
+  <div class="text-center">
+
+  </div>
+
+  <div class="" style="color: white" ng-model="info.userInfo" ng-if="info.signup == true">
+    Your registered information is: <br>
+    <div>
+      {{info.userInfo.name}}<br>{{info.userInfo.lastname}}<br>{{info.userInfo.phone}}
+      <br>{{info.userInfo.email}}
+      <br>...and your favorite dish is:
+      <br>
+      <br>
+      <div style="font-size: 40px;">
+      {{info.userInfo.favorite_dish}}</div>
+      <br>
+    </div>
+
+    <!-- <menu-item menuItem="info.userInfo.short_name"
+    ng-src="https://psreyes-course5-module5.herokuapp.com/images/{{info.userInfo.favorite_short}}.jpg" alt="{{info.userInfo.favorite_dish}}"></menu-item> -->
+
+
+    <div class="menu-item-tile col-md-6">
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="menu-item-photo">
+            <img class="img-responsive" width="250" height="150" style="align:left;"
+            ng-src="https://psreyes-course5-module5.herokuapp.com/images/{{info.userInfo.favorite_short}}.jpg" alt="{{info.userInfo.favorite_dish}}">
+          </div>
+          </div>
+      </div>
+    </div>
+
+    <div>
+      {{info.userInfo.favorite_description}}
+    </div>
+    <!-- <img ng-src="https://psreyes-course5-module5.herokuapp.com/images/{{info.userInfo.favorite_short}}.jpg"> -->
+
+
+  </div>
+
+  <div style="color: white;" ng-if="info.signup == false;">
+    Not yet signed up, Please, <a ui-sref="personal">Sign up first</a>
+  </div>
+
+
+
+  <ui-view></ui-view>
+</div>
